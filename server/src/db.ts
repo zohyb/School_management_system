@@ -6,12 +6,14 @@ function env(name: string, fallback?: string): string {
   return v;
 }
 
+// Railway's MySQL plugin exposes MYSQL* variables; accept them as fallbacks
+// so the service works without manual variable mapping.
 export const pool = mysql.createPool({
-  host: env("DB_HOST", "localhost"),
-  port: Number(env("DB_PORT", "3306")),
-  user: env("DB_USER", "sms"),
-  password: env("DB_PASSWORD", "smspass123"),
-  database: env("DB_NAME", "sms"),
+  host: env("DB_HOST", process.env.MYSQLHOST ?? "localhost"),
+  port: Number(env("DB_PORT", process.env.MYSQLPORT ?? "3306")),
+  user: env("DB_USER", process.env.MYSQLUSER ?? "sms"),
+  password: env("DB_PASSWORD", process.env.MYSQLPASSWORD ?? "smspass123"),
+  database: env("DB_NAME", process.env.MYSQLDATABASE ?? "sms"),
   waitForConnections: true,
   connectionLimit: 10,
   dateStrings: true,
