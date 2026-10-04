@@ -5,7 +5,8 @@
     "build": "tsc -p tsconfig.json",
     "dev": "tsx watch src/index.ts",
     "start": "node dist/index.js",
-    "migrate": "node scripts/migrate.mjs"
+    "migrate": "node scripts/migrate.mjs",
+    "seed": "node scripts/seed.mjs"
   },
   "type": "module",
   "version": "1.0.0",
