@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+/*
+ * SMS design tokens.
+ * Minimal, flat, neutral. Solid colors only: no gradients anywhere.
+ * Buttons use rounded-md (never pill). Motion is limited to 150ms
+ * transitions on interactive elements; no scroll or cursor effects.
+ */
+@theme {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+
+  /* Brand: deep pine green */
+  --color-brand-50: #f0f7f4;
+  --color-brand-100: #dcefe8;
+  --color-brand-200: #bbdfd2;
+  --color-brand-300: #8fc7b3;
+  --color-brand-400: #5da98f;
+  --color-brand-500: #3a8c72;
+  --color-brand-600: #25705a;
+  --color-brand-700: #1f5c4a;
+  --color-brand-800: #1d4a3d;
+  --color-brand-900: #1a3d33;
+
+  /* Ink: near-black for text, stone scale for surfaces */
+  --color-ink-900: #1c1917;
+  --color-ink-700: #44403c;
+  --color-ink-500: #78716c;
+}
+
+html {
+  font-family: var(--font-sans);
+  color: var(--color-ink-900);
+  background: #fafaf9;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Restrained focus state used by all interactive elements */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-brand-600);
+  outline-offset: 2px;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
